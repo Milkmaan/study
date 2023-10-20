@@ -1,0 +1,71 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Kasse</title>
+    </head>
+    <body>
+        <h3>Sum.-</h3>
+        <br>
+        <div><span id="txtKjopSum"></span>
+        <br><p>-</p><br>
+        <span id="txtReturSum"></span>
+        </div>
+        <h3>Retur</h3>
+        <div><span id="txtSvar"></span></div>
+        <br><br><hr>
+        <input type="number" min="0" id="PengInn"><br>
+        <button onclick="StartKjop()">Kjøp</button>
+        <button onclick="Retur()">Retur</button>
+        <button onclick="Betal()">Betal</button>
+    </body>
+    <script>
+        let sum = 0;
+        let PengInn = document.getElementById("PengInn");
+        let txtKjopSum = document.getElementById("txtKjopSum");
+        let txtReturSum = document.getElementById("txtReturSum");
+        let txtSvar = document.getElementById("txtSvar");
+        let KjopSum = [];
+        let ReturSum = [];
+
+
+        function StartKjop(){
+            if (PengInn<0){
+                alert(`Dette er en negativ verdi`)
+                return;
+            }
+            else{
+                inpKjopSum = Number(PengInn.value);
+                KjopSum.push(inpKjopSum);
+                txtKjopSum.innerHTML = KjopSum;
+                console.log(KjopSum);
+            }
+        }
+        function Retur(){
+             if (PengInn<0){
+                alert(`Dette er en negativ verdi`)
+                return;
+            }
+            else{
+                inpReturSum = Number(PengInn.value);
+                ReturSum.push(inpReturSum);
+                txtReturSum.innerHTML = ReturSum;
+                console.log(ReturSum)
+        }
+        }
+        function Betal(){
+            let sumKjop = 0;
+            for(let i=0; i<KjopSum.length; i++){
+                sumKjop += KjopSum[i];
+                }
+                let sumRetur = 0;
+            for(let i=0; i<ReturSum.length; i++){
+                sumRetur += ReturSum[i];
+            }
+            let retur = sumKjop - sumRetur;
+            txtSvar.innerHTML = retur;
+            console.log(retur);
+        }
+
+
+    </script>
+</html>
